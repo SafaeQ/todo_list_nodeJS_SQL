@@ -1,5 +1,4 @@
-// const projects = require('./assets/scripts/projects.js');
-const p
+const projects = require('./data.js')
 
 function findAll() {
     return new Promise((resolve, reject) => {
@@ -7,4 +6,10 @@ function findAll() {
     })
 }
 
-module.exports = findAll;
+function findById(id) {
+
+}
+
+module.exports = {
+    findAll
+}

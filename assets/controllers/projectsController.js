@@ -1,14 +1,13 @@
-const Projects = require('./assets/models/projectsModel.js')
+const Project = require('./projectsModel')
 
 async function getProjects(req, res) {
     try {
-        const projects = await Projects.findAll()
-        res.writeHeader(200, {
+        const project = await Project.findAll()
+        res.writeHead(200, {
             'Content-Type': 'application/json'
-        });
-        res.end(JSON.stringify(projects));
+        })
+        res.end(JSON.stringify(project));
     } catch (err) {
-        console.log(err)
+        res.end(err.message)
     }
 }
-module.exports = getProjects
