@@ -1,11 +1,10 @@
-const projects = require('./assets/scripts/projects');
+// const projects = require('./assets/scripts/projects.js');
+const p
 
-function find() {
+function findAll() {
     return new Promise((resolve, reject) => {
         resolve(projects)
     })
 }
 
-module.exports = {
-    find
-}
+module.exports = findAll;

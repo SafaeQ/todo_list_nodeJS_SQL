@@ -1,15 +1,14 @@
-// const static = require('node-static');
-// const file = new(static.Server)(__dirname);
-
 const http = require('http');
+const getProjects = require('./assets/controllers/projectsController.js')
 
-// const db = require('dbconnection')
+
+
 const hostname = '127.0.0.1';
 const PORT = 3000;
 
 const server = http.createServer((req, res) => {
     if (req.url === '/api/projects' && req.method === 'GET') {
-
+        getProjects(req, res);
     } else {
         res.writeHeader(404, {
             'Content-Type': 'application/json'
@@ -23,3 +22,5 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, hostname, () => {
     console.log(`server listening on http://${hostname}:${PORT}/`);
 });
+
+module.exports = getProjects;
