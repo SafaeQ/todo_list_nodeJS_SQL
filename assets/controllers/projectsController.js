@@ -47,7 +47,7 @@ async function deleteProjectId(req, res, id) {
         res.end('Route Not Found')
     }
 }
-async function updateProjectId(req, res, id, params) {
+async function updateProjectId(req, res, id) {
     try {
         // const up = await Project.findById(id)
         const updateIdP = await Project.updateProId(id)

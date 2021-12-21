@@ -10,7 +10,6 @@ const PORT = 3000;
 // const data = require('./assets/scripts/data')
 
 const server = http.createServer((req, res) => {
-
     switch (req.method) {
         case 'GET':
             if (req.url === '/projects') {
