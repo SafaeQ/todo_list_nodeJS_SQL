@@ -19,8 +19,6 @@ module.exports = {
 
 
 
-
-
 // let tableSql = 'SELECT * FROM projet;'
 // let inserting = "INSERT INTO projet (`title`, `description`, `dueDate`, `completed`) VALUES ?"
 // let items = []

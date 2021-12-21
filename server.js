@@ -1,26 +1,51 @@
 const http = require('http');
-const data = require('./assets/scripts/data');
-const db = require('./dbconnection')
-
+const {
+    getProjects,
+    getProjectId,
+    deleteProjectId,
+    updateProjectId
+} = require('./assets/controllers/projectsController.js')
 const hostname = '127.0.0.1';
 const PORT = 3000;
+// const data = require('./assets/scripts/data')
 
 const server = http.createServer((req, res) => {
-    if (req.url === '/api/projects' && req.method === 'GET') {
-        res.writeHeader(200, {
-            'Content-Type': 'application/json'
-        });
-        res.end(JSON.stringify(data));
-    } else {
-        res.writeHeader(404, {
-            'Content-Type': 'application/json'
-        });
-        res.end(JSON.stringify({
-            message: 'Route Not Found'
-        }));
+
+    switch (req.method) {
+        case 'GET':
+            if (req.url === '/projects') {
+                return getProjects(req, res);
+            } else if (req.url.match(/\/projects\/(\d+)/) != null) {
+                // console.log('fff');
+                const id = req.url.match(/\/projects\/(\d+)/)[1]
+                return getProjectId(req, res, id);
+            }
+            break;
+        case 'POST':
+            if (req.url === '/project') {
+                return createProject(req, res)
+            }
+            break;
+        case 'DELETE':
+            if (req.url.match(/\/projects\/(\d+)/) != null) {
+                const id = req.url.match(/\/projects\/(\d+)/)[1]
+                res.end('item deleted successfully')
+                return deleteProjectId(req, res, id);
+            }
+            break;
+        case 'PUT':
+            if (req.url.match(/\/projects\/(\d+)/) != null) {
+                const id = req.url.match(/\/projects\/(\d+)/)[1]
+                return updateProjectId(req, res, id);
+            }
+            break;
+        default:
+            res.statusCode = 404;
+            res.end('Route Not Found');
     }
 })
 
-server.listen(PORT, hostname, () => {
+
+server.listen(PORT, () => {
     console.log(`server listening on http://${hostname}:${PORT}/`);
 });

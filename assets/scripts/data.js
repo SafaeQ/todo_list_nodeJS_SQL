@@ -11,4 +11,6 @@ const projects = [{
     "dueDate": "12/12/2025",
     "completed": "0"
 }]
-module.exports = projects;
+module.exports = {
+    projects
+};
