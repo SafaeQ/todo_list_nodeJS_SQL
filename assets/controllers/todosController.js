@@ -14,7 +14,12 @@ async function getTodos(req, res) {
     }
 }
 async function getTodo(req, res) {
+    try {
 
+    } catch (error) {
+        console.error(error)
+        res.end('Route Not Found')
+    }
 }
 
 module.exports = {
