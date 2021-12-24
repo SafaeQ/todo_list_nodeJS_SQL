@@ -26,6 +26,9 @@ const server = http.createServer((req, res) => {
             }
             if (req.url === '/todos') {
                 return getTodos(req, res);
+            } else if (req.url.match(/\/todos\/(\d+)/) !== null) {
+                const id = req.url.match(/\/todos\/(\d+)/)[1]
+
             }
             break;
         case 'POST':
