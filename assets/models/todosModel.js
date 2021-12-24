@@ -35,6 +35,9 @@ function updateTodoById(id, data) {
         let todo = {
             ...data
         }
+        con.query(query, (err, result) => {
+
+        })
     })
 }
 
