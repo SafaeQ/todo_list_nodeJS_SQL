@@ -2,7 +2,7 @@ const {
     con
 } = require('../../dbconnection')
 
-function getTodos() {
+function getALLTodos() {
     return new Promise((resolve, reject) => {
         const query = "SELECT * FROM todo";
         con.query(query, (err, results) => {
@@ -58,7 +58,7 @@ function updateTodoById(id, data) {
 
 
 module.exports = {
-    getTodos,
+    getALLTodos,
     getTodoById,
     deleteTodoById,
     updateTodoById,
