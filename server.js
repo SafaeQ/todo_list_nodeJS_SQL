@@ -6,6 +6,9 @@ const {
     updateProjectId,
     createProject
 } = require('./assets/controllers/projectsController.js')
+const {
+    getTodos,
+} = require('./assets/controllers/todosController')
 const hostname = '127.0.0.1';
 const PORT = 3000;
 // const data = require('./assets/scripts/data')
