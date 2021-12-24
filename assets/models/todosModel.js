@@ -7,7 +7,7 @@ function getALLTodos() {
         const query = "SELECT * FROM todo";
         con.query(query, (err, results) => {
             if (err) throw err;
-            resolve(result)
+            resolve(results)
         })
     })
 }
