@@ -8,7 +8,7 @@ const {
 } = require('./assets/controllers/projectsController.js')
 const {
     getTodos,
-
+    getTodo,
 } = require('./assets/controllers/todosController')
 const hostname = '127.0.0.1';
 const PORT = 3000;

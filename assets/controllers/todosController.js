@@ -13,7 +13,7 @@ async function getTodos(req, res) {
         res.end('Route Not Found')
     }
 }
-async function getTodo(req, res) {
+async function getTodo(req, res, id) {
     try {
         const todo = await Todo.getTodoById(id)
         res.writeHead(200, {
