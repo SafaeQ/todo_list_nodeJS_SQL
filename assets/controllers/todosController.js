@@ -15,7 +15,11 @@ async function getTodos(req, res) {
 }
 async function getTodo(req, res) {
     try {
-
+        const todo = await Todo.getTodoById(id)
+        res.writeHead(200, {
+            'Content-Type': 'application/json'
+        })
+        res.end(JSON.stringify(todo))
     } catch (error) {
         console.error(error)
         res.end('Route Not Found')
