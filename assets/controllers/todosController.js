@@ -13,8 +13,12 @@ async function getTodos(req, res) {
         res.end('Route Not Found')
     }
 }
+async function getTodo(req, res) {
+
+}
 
 module.exports = {
     getTodos,
+    getTodo,
 
 }

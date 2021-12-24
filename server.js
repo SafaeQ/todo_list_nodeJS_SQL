@@ -8,6 +8,7 @@ const {
 } = require('./assets/controllers/projectsController.js')
 const {
     getTodos,
+
 } = require('./assets/controllers/todosController')
 const hostname = '127.0.0.1';
 const PORT = 3000;
@@ -28,7 +29,7 @@ const server = http.createServer((req, res) => {
                 return getTodos(req, res);
             } else if (req.url.match(/\/todos\/(\d+)/) !== null) {
                 const id = req.url.match(/\/todos\/(\d+)/)[1]
-
+                return getTodo(req, res, id)
             }
             break;
         case 'POST':
