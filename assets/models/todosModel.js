@@ -30,6 +30,14 @@ function deleteTodoById(id) {
     })
 }
 
+function createTodo(data) {
+    return new Promise((resolve, reject) => {
+        let todo = {
+            ...data
+        }
+    })
+}
+
 function updateTodoById(id, data) {
     return new Promise((resolve, reject) => {
         let todo = {
@@ -42,6 +50,7 @@ function updateTodoById(id, data) {
         })
     })
 }
+
 
 module.exports = {
     getTodos,
