@@ -1,4 +1,7 @@
 const Project = require('../models/projectsModel')
+const {
+    getpro
+} = require('../../helper')
 
 async function getProjects(req, res) {
     try {
@@ -49,12 +52,29 @@ async function deleteProjectId(req, res, id) {
 }
 async function updateProjectId(req, res, id) {
     try {
-        // const up = await Project.findById(id)
-        const updateIdP = await Project.updateProId(id)
+        // colect data from request params
+        // pass it to the model
+        const data = await getpro(req)
+        const updateIdP = await Project.updateProId(data, id)
         res.writeHead(200, {
             'Content-Type': 'application/json'
         })
-        res.end(JSON.stringify(updateIdP))
+        return res.end(JSON.stringify(updateIdP))
+
+    } catch (error) {
+        console.error(error)
+        res.end('Route Not Found')
+    }
+}
+
+async function createProject(req, res) {
+    try {
+        const data = await getpro(req)
+        const inserting = await Project.insertProject(data)
+        res.writeHead(200, {
+            'Content-Type': 'application/json'
+        })
+        return res.end(JSON.stringify(inserting))
     } catch (error) {
         console.error(error)
         res.end('Route Not Found')
@@ -65,5 +85,6 @@ module.exports = {
     getProjects,
     getProjectId,
     deleteProjectId,
-    updateProjectId
+    updateProjectId,
+    createProject
 }

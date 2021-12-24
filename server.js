@@ -3,13 +3,15 @@ const {
     getProjects,
     getProjectId,
     deleteProjectId,
-    updateProjectId
+    updateProjectId,
+    createProject
 } = require('./assets/controllers/projectsController.js')
 const hostname = '127.0.0.1';
 const PORT = 3000;
 // const data = require('./assets/scripts/data')
 
 const server = http.createServer((req, res) => {
+
     switch (req.method) {
         case 'GET':
             if (req.url === '/projects') {
@@ -43,6 +45,7 @@ const server = http.createServer((req, res) => {
             res.end('Route Not Found');
     }
 })
+
 
 
 server.listen(PORT, () => {

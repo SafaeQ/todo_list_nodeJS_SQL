@@ -35,12 +35,29 @@ function deleteProId(id) {
 
 }
 
-function updateProId(params, id) {
+function updateProId(data, id) {
+    // update action
     return new Promise((resolve, reject) => {
-        const query = "UPDATE `projet` SET `title`=[value-2],`description`=[value-3],`dueDate`=[value-4],`completed`=[value-5] WHERE id = ?"
-        con.query(query, id, (err, result) => {
+        let proj = {
+            ...data
+        }
+        const query = `UPDATE projet SET title= '${data.title}',description= '${data.description}',dueDate= '${data.dueDate}',completed= '${data.completed}' WHERE id = ${id}`;
+        con.query(query, (err, result) => {
             if (err) throw err
-            resolve(result)
+            resolve(proj)
+        })
+    })
+}
+
+function insertProject(data) {
+    return new Promise((resolve, reject) => {
+        let p = {
+            ...data
+        }
+        const query = `INSERT INTO projet (title,description,dueDate,completed) VALUE ('${data.title}','${data.description}','${data.dueDate}','${data.completed}')`;
+        con.query(query, (err, result) => {
+            if (err) throw err
+            resolve(p)
         })
     })
 }
@@ -49,5 +66,6 @@ module.exports = {
     findAll,
     findById,
     deleteProId,
-    updateProId
+    updateProId,
+    insertProject
 }
