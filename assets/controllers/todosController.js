@@ -9,6 +9,12 @@ async function getTodos(req, res) {
         })
         res.end(JSON.stringify(todo))
     } catch (error) {
-
+        console.error(error)
+        res.end('Route Not Found')
     }
+}
+
+module.exports = {
+    getTodos,
+
 }

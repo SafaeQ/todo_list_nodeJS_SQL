@@ -21,6 +21,9 @@ const server = http.createServer((req, res) => {
                 const id = req.url.match(/\/projects\/(\d+)/)[1]
                 return getProjectId(req, res, id);
             }
+            if (req.url === '/todos') {
+                return getTodos(req, res);
+            }
             break;
         case 'POST':
             if (req.url === '/project') {
