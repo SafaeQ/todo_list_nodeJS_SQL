@@ -10,6 +10,7 @@ const {
     getTodos,
     getTodo,
     createTodo,
+    deleteTodo
 } = require('./assets/controllers/todosController')
 const hostname = '127.0.0.1';
 const PORT = 3000;
@@ -46,6 +47,10 @@ const server = http.createServer((req, res) => {
                 const id = req.url.match(/\/projects\/(\d+)/)[1]
                 res.end('item deleted successfully')
                 return deleteProjectId(req, res, id);
+            } else if (req.url.match(/\/todos\/(\d+)/) != null) {
+                const id = req.url.match(/\/todos\/(\d+)/)[1]
+                res.end('todo deleted successfully')
+                return deleteTodo(req, res, id);
             }
             break;
         case 'PUT':

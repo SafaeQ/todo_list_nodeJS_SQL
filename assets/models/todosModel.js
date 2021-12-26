@@ -25,8 +25,10 @@ function getTodoById(id) {
 function deleteTodoById(id) {
     return new Promise((resolve, reject) => {
         const query = "DELETE FROM todo WHERE id =?";
-        if (err) throw err
-        resolve(result)
+        con.query(query, id, (err, results) => {
+            if (err) throw err
+            resolve(results)
+        })
     })
 }
 
