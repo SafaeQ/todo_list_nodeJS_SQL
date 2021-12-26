@@ -26,6 +26,9 @@ async function getTodo(req, res, id) {
     }
 }
 
+async function createTodo(req, res) {
+
+}
 module.exports = {
     getTodos,
     getTodo,
