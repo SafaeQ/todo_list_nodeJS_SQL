@@ -50,7 +50,7 @@ function updateTodoById(id, data) {
         let todo = {
             ...data
         }
-        const query = `UPDATE todo SET title_todo= '${data.title_todo}'projet_id= '${data.projet_id}' WHERE id = ${id}`;
+        const query = `UPDATE todo SET title_todo= '${data.title_todo}', projet_id= '${data.projet_id}' WHERE id = ${id}`;
         con.query(query, (err, result) => {
             if (err) throw err
             resolve(todo)
