@@ -35,7 +35,7 @@ function insertTodo(data) {
         let todo = {
             ...data
         }
-        const query = `INSERT INTO todo (   title_todo, projet_id) VALUE ('${data.title_todo}','${data.projet_id}')`;
+        const query = `INSERT INTO todo (title_todo, projet_id) VALUE ('${data.title_todo}','${data.projet_id}')`;
         con.query(query, (err, result) => {
             if (err) throw err
             resolve(todo)
