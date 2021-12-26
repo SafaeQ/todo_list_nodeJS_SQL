@@ -1,5 +1,7 @@
 const Todo = require('../models/todosModel')
-
+const {
+    getpro
+} = require('../../helper')
 
 async function getTodos(req, res) {
     try {
@@ -28,6 +30,7 @@ async function getTodo(req, res, id) {
 
 async function createTodo(req, res) {
     try {
+        const data = await getpro(req)
         const todo = await Todo.insertTodo(data)
         res.writeHead(200, {
             'Content-Type': 'application/json'
