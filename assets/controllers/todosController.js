@@ -27,7 +27,12 @@ async function getTodo(req, res, id) {
 }
 
 async function createTodo(req, res) {
-
+    try {
+        const todo = await Todo.insertTodo(data)
+    } catch (error) {
+        console.error(error)
+        res.end('Route Not Found')
+    }
 }
 module.exports = {
     getTodos,

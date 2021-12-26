@@ -30,7 +30,7 @@ function deleteTodoById(id) {
     })
 }
 
-function createTodo(data) {
+function insertTodo(data) {
     return new Promise((resolve, reject) => {
         let todo = {
             ...data
@@ -62,6 +62,6 @@ module.exports = {
     getTodoById,
     deleteTodoById,
     updateTodoById,
-    createTodo
+    insertTodo
 
 }
