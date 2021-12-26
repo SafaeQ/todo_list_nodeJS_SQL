@@ -35,7 +35,10 @@ const server = http.createServer((req, res) => {
         case 'POST':
             if (req.url === '/project') {
                 return createProject(req, res)
+            } else if (req.url === '/todo') {
+                return createTodo(req, res)
             }
+
             break;
         case 'DELETE':
             if (req.url.match(/\/projects\/(\d+)/) != null) {
