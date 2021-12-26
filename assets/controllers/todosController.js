@@ -29,6 +29,10 @@ async function getTodo(req, res, id) {
 async function createTodo(req, res) {
     try {
         const todo = await Todo.insertTodo(data)
+        res.writeHead(200, {
+            'Content-Type': 'application/json'
+        })
+        res.end(JSON.stringify(todo))
     } catch (error) {
         console.error(error)
         res.end('Route Not Found')
@@ -37,5 +41,5 @@ async function createTodo(req, res) {
 module.exports = {
     getTodos,
     getTodo,
-
+    createTodo
 }
