@@ -41,8 +41,22 @@ async function createTodo(req, res) {
         res.end('Route Not Found')
     }
 }
+
+async function deleteTodo(req, res, id) {
+    try {
+        const todo = await Todo.deleteTodoById(id)
+        res.writeHead(200, {
+            'Content-Type': 'application/json'
+        })
+
+    } catch (error) {
+        console.error(error)
+        res.end('Route Not Found')
+    }
+}
 module.exports = {
     getTodos,
     getTodo,
-    createTodo
+    createTodo,
+    deleteTodo
 }
