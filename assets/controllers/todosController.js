@@ -56,7 +56,8 @@ async function deleteTodo(req, res, id) {
 }
 async function updateTodoId(req, res, id) {
     try {
-        const todo = await Todo.updateTodoById(id)
+        const data = await getpro(req)
+        const todo = await Todo.updateTodoById(data, id)
         res.writeHead(200, {
             'Content-Type': 'application/json'
         })
@@ -70,5 +71,6 @@ module.exports = {
     getTodos,
     getTodo,
     createTodo,
-    deleteTodo
+    deleteTodo,
+    updateTodoId
 }
