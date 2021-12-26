@@ -57,7 +57,7 @@ async function deleteTodo(req, res, id) {
 async function updateTodoId(req, res, id) {
     try {
         const data = await getpro(req)
-        const todo = await Todo.updateTodoById(data, id)
+        const todo = await Todo.updateTodoById(id, data)
         res.writeHead(200, {
             'Content-Type': 'application/json'
         })

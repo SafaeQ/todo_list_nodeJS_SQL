@@ -47,13 +47,13 @@ function insertTodo(data) {
 
 function updateTodoById(id, data) {
     return new Promise((resolve, reject) => {
-        let todo = {
+        let todo1 = {
             ...data
         }
         const query = `UPDATE todo SET title_todo= '${data.title_todo}', projet_id= '${data.projet_id}' WHERE id = ${id}`;
         con.query(query, (err, result) => {
             if (err) throw err
-            resolve(todo)
+            resolve(todo1)
         })
     })
 }
