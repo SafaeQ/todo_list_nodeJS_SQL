@@ -13,9 +13,13 @@ const {
     deleteTodo,
     updateTodoId
 } = require('./assets/controllers/todosController')
+
+
 const hostname = '127.0.0.1';
 const PORT = 3000;
-// const data = require('./assets/scripts/data')
+
+
+////////////////////////////////////
 
 const server = http.createServer((req, res) => {
 
@@ -28,7 +32,7 @@ const server = http.createServer((req, res) => {
                 const id = req.url.match(/\/projects\/(\d+)/)[1]
                 return getProjectId(req, res, id);
             }
-            if (req.url === '/todos') {
+            if (req.url === '/projects/todos') {
                 return getTodos(req, res);
             } else if (req.url.match(/\/todos\/(\d+)/) !== null) {
                 const id = req.url.match(/\/todos\/(\d+)/)[1]
@@ -37,8 +41,10 @@ const server = http.createServer((req, res) => {
             break;
         case 'POST':
             if (req.url === '/project') {
+                res.end('item created successfully')
                 return createProject(req, res)
             } else if (req.url === '/todo') {
+                res.end('todo created successfully')
                 return createTodo(req, res)
             }
 
@@ -57,9 +63,11 @@ const server = http.createServer((req, res) => {
         case 'PUT':
             if (req.url.match(/\/projects\/(\d+)/) != null) {
                 const id = req.url.match(/\/projects\/(\d+)/)[1]
+                res.end('project updated successfully')
                 return updateProjectId(req, res, id);
             } else if (req.url.match(/\/todos\/(\d+)/) != null) {
                 const id = req.url.match(/\/todos\/(\d+)/)[1]
+                res.end('todo updated successfully')
                 return updateTodoId(req, res, id);
             }
             break;
